@@ -1,0 +1,10 @@
+---
+// Usa el sprite de <Sprite /> (símbolos #i-play, #i-bean, ...).
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+---
+
+<svg class={className}><use href={`#i-${name}`} /></svg>

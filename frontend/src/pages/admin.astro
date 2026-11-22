@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/admin.css";
+---
+
+<Layout title="Panel del docente · Lotería Mazahua" bodyClass="admin" noindex>
+  <!-- Inicio de sesión -->
+  <main id="login" class="loginWrap" hidden>
+    <div class="sign wood red"><h1>Panel</h1><p>del docente</p></div>
+    <form id="loginForm" class="card stack loginForm" novalidate>
+      <label class="field">Usuario <input id="lUser" autocomplete="username" autocapitalize="none" spellcheck="false" required /></label>
+      <label class="field">Contraseña <input id="lPass" type="password" autocomplete="current-password" required /></label>
+      <p id="lMsg" class="msg" role="alert" hidden></p>
+      <button id="lBtn" type="submit" class="wood green">Entrar</button>
+    </form>
+    <a class="volver" href="/">Volver a la lotería</a>
+  </main>
+
+  <!-- Panel -->
+  <div id="panel" class="adminWrap" hidden>
+    <header class="adminBar wood red">
+      <h1>Panel del docente</h1>
+      <span id="dbPill" class="pill">Comprobando…</span>
+      <span id="quien" class="quien"></span>
+      <button id="salirBtn" type="button" class="wood gold">Salir</button>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button type="button" role="tab" class="wood" data-tab="cartas" aria-selected="true">Cartas</button>
+      <button type="button" role="tab" class="wood" data-tab="videos" aria-selected="false">Videos</button>
+      <button type="button" role="tab" class="wood" data-tab="partida" aria-selected="false">Partida</button>
+      <button type="button" role="tab" class="wood" data-tab="cuenta" aria-selected="false">Mi cuenta</button>
+    </nav>
+
+    <section id="tab-cartas" role="tabpanel" class="card stack">
+      <div class="toolbar">
+        <input id="buscar" type="search" placeholder="Buscar por número o nombre" aria-label="Buscar carta" />
+        <button id="nuevaCarta" type="button" class="wood green">Nueva carta</button>
+      </div>
+      <p id="cuentaCartas" class="hint"></p>
+      <div id="cartaGrid" class="cartaGrid"></div>
+    </section>
+
+    <section id="tab-videos" role="tabpanel" class="card stack" hidden>
+      <div class="toolbar">
+        <p class="hint">Enlaces de YouTube que se muestran en «Videos del proyecto».</p>
+        <button id="nuevoVideo" type="button" class="wood green">Nuevo video</button>
+      </div>
+      <div id="videoLista" class="videoLista"></div>
+    </section>
+
+    <section id="tab-partida" role="tabpanel" class="card stack" hidden>
+      <h2>Partida en curso</h2>
+      <div id="estadoPartida" class="estadoGrid"></div>
+      <div class="filaBtns">
+        <button id="reiniciarBtn" type="button" class="wood brown">Reiniciar partida</button>
+      </div>
+      <h2>Cantar una carta de prueba</h2>
+      <p class="hint">Sirve para probar sin el lector RFID. La partida aparecerá en línea unos segundos.</p>
+      <div class="toolbar">
+        <select id="cantarSel" aria-label="Carta a cantar"></select>
+        <button id="cantarBtn" type="button" class="wood gold">Cantar carta</button>
+      </div>
+    </section>
+
+    <section id="tab-cuenta" role="tabpanel" class="card" hidden>
+      <form id="passForm" class="stack passForm" novalidate>
+        <h2>Cambiar contraseña</h2>
+        <label class="field">Contraseña actual <input id="pActual" type="password" autocomplete="current-password" /></label>
+        <label class="field">Contraseña nueva <input id="pNueva" type="password" autocomplete="new-password" minlength="8" /><small>Mínimo 8 caracteres.</small></label>
+        <label class="field">Repite la contraseña nueva <input id="pRepite" type="password" autocomplete="new-password" /></label>
+        <p id="pMsg" class="msg" role="alert" hidden></p>
+        <button id="pBtn" type="submit" class="wood green">Guardar contraseña</button>
+      </form>
+    </section>
+
+    <p id="aviso" class="msg aviso" role="status" hidden></p>
+  </div>
+
+  <!-- Carta: crear / modificar -->
+  <dialog id="cartaDlg" class="modal">
+    <div class="modalBody stack">
+      <header class="modalHead"><h3 id="cartaTitulo">Nueva carta</h3><button type="button" class="wood red closeBtn" data-cerrar>Cerrar</button></header>
+      <form id="cartaForm" class="stack" novalidate>
+        <label class="field">Número <input id="cNumero" type="number" min="1" inputmode="numeric" /><small id="cNumeroAyuda">Opcional. Si lo dejas vacío se usa el siguiente número libre.</small></label>
+        <label class="field">Nombre en español <input id="cEs" maxlength="100" required /></label>
+        <label class="field">Nombre en mazahua <input id="cMaz" maxlength="150" required /></label>
+        <label class="field">Descripción <textarea id="cDesc" rows="3"></textarea></label>
+        <label class="field">UID de la tarjeta RFID <input id="cUid" maxlength="32" autocomplete="off" spellcheck="false" /><small id="cUidAyuda">Opcional. Se guarda en mayúsculas.</small></label>
+        <p id="cMsg" class="msg" role="status" hidden></p>
+        <button id="cGuardar" type="submit" class="wood green">Guardar carta</button>
+      </form>
+      <section id="cArchivos" class="archivos stack" hidden></section>
+      <button id="cEliminar" type="button" class="wood brown" hidden>Eliminar carta</button>
+    </div>
+  </dialog>
+
+  <!-- Video: crear / modificar -->
+  <dialog id="videoDlg" class="modal">
+    <form id="videoForm" class="modalBody stack" novalidate>
+      <header class="modalHead"><h3 id="videoTitulo">Nuevo video</h3><button type="button" class="wood red closeBtn" data-cerrar>Cerrar</button></header>
+      <label class="field">Título <input id="vTitulo" maxlength="150" required /></label>
+      <label class="field">Enlace de YouTube <input id="vUrl" type="url" maxlength="255" placeholder="https://www.youtube.com/watch?v=…" required /></label>
+      <label class="field">Descripción <textarea id="vDesc" rows="3"></textarea></label>
+      <p id="vMsg" class="msg" role="alert" hidden></p>
+      <button id="vGuardar" type="submit" class="wood green">Guardar video</button>
+    </form>
+  </dialog>
+
+  <script>
+    import "../scripts/admin.js";
+  </script>
+</Layout>

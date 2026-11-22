@@ -1,0 +1,31 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<section id="menu" class="screen menu">
+  <span id="connection" class="pill">Esperando al ESP32</span>
+
+  <div class="sign wood red">
+    <h1>Lotería</h1>
+    <p>Mazahua</p>
+  </div>
+  <p class="tagline">Ne chare · 54 cartas · 30 tableros</p>
+  <div class="diamonds" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i><i class="y"></i><i class="r"></i></div>
+
+  <nav class="menuBtns">
+    <button id="playBtn" type="button" class="wood red big"><Icon name="play" />Jugar</button>
+    <button id="galleryBtn" type="button" class="wood gold"><Icon name="list" />Ver tableros</button>
+    <button id="albumBtn" type="button" class="wood green"><Icon name="star" />Álbum de cartas</button>
+    <button id="audioBtn" type="button" class="wood brown"><Icon name="sound" />Audio mazahua</button>
+    <button id="videosBtn" type="button" class="wood red"><Icon name="play" />Videos del proyecto</button>
+  </nav>
+
+  <div class="iconBar">
+    <button id="shareBtn" type="button" class="wood red sq" aria-label="Compartir"><Icon name="share" /></button>
+    <button id="rulesBtn" type="button" class="wood gold sq" aria-label="Cómo ganar"><Icon name="trophy" /></button>
+    <button id="historyMenuBtn" type="button" class="wood green sq" aria-label="Historial de cartas"><Icon name="podium" /></button>
+    <button id="settingsBtn" type="button" class="wood red sq" aria-label="Ajustes"><Icon name="gear" /></button>
+    <button id="clearBtn" type="button" class="wood gold sq" aria-label="Quitar mis frijolitos"><Icon name="bean" class="bean" /></button>
+  </div>
+  <footer class="strip" aria-hidden="true"></footer>
+</section>

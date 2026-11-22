@@ -1,0 +1,43 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<aside id="historyPanel" class="sheet small" hidden>
+  <div class="sheetHead"><h3>Historial</h3><button type="button" class="wood red closeBtn">Cerrar</button></div>
+  <ol id="history"></ol>
+</aside>
+
+<aside id="galleryPanel" class="sheet" hidden>
+  <div class="sheetHead"><h3>Tableros (30)</h3><button id="galleryClose" type="button" class="wood red closeBtn">Cerrar</button></div>
+  <div id="galleryGrid" class="galleryGrid"></div>
+</aside>
+
+<aside id="albumPanel" class="sheet" hidden>
+  <div class="sheetHead"><h3>Álbum de cartas</h3><button type="button" class="wood red closeBtn">Cerrar</button></div>
+  <p class="sheetHint">Toca una carta para escucharla en mazahua y verla en grande.</p>
+  <div id="albumGrid" class="albumGrid"></div>
+</aside>
+
+<aside id="videosPanel" class="sheet" hidden>
+  <div class="sheetHead"><h3>Videos del proyecto</h3><button type="button" class="wood red closeBtn">Cerrar</button></div>
+  <p class="sheetHint">Muestras del funcionamiento de la Lotería Mazahua.</p>
+  <div id="videosList" class="videosList"></div>
+</aside>
+
+<aside id="rulesPanel" class="sheet small" hidden>
+  <div class="sheetHead"><h3>Cómo ganar</h3><button type="button" class="wood red closeBtn">Cerrar</button></div>
+  <ol class="rules">
+    <li>Escucha la carta que sale en mazahua.</li>
+    <li>Si está en tu tablero, tócala para ponerle su frijolito.</li>
+    <li>Completa una línea (horizontal, vertical o diagonal) con cartas que ya salieron.</li>
+    <li>¡Toca <b>¡Lotería!</b> para que se valide!</li>
+  </ol>
+</aside>
+
+<aside id="settingsPanel" class="sheet small" hidden>
+  <div class="sheetHead"><h3>Ajustes</h3><button type="button" class="wood red closeBtn">Cerrar</button></div>
+  <div class="settingsList">
+    <button id="testSoundBtn" type="button" class="wood brown"><Icon name="sound" />Probar sonido</button>
+    <button id="demoBtn2" type="button" class="wood gold"><Icon name="play" />Ver demo (sin ESP32)</button>
+  </div>
+</aside>

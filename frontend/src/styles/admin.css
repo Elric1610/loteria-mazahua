@@ -1,0 +1,86 @@
+/* Panel del docente: mismo "madera y mantel" de la lotería, pero con scroll y formularios. */
+body.admin{height:auto;min-height:100dvh;overflow-y:auto}
+.admin :focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.admin h2{font-size:22px;color:var(--redD)}
+.admin h3{font-size:24px;color:var(--redD)}
+.admin h4{margin:0;font:400 19px "Lilita One",sans-serif;color:var(--redD)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--cream);border:3px solid var(--redD);border-radius:22px;box-shadow:0 5px 0 var(--redD),0 12px 24px rgba(90,40,20,.2);padding:18px}
+.hint{margin:0;font-size:14px;color:var(--muted)}
+
+/* Formularios */
+.admin input,.admin textarea,.admin select{width:100%;font:700 16px Nunito,system-ui,sans-serif;color:var(--ink);background:#fffaf0;border:2px solid var(--brown);border-radius:12px;padding:10px 12px}
+.admin textarea{resize:vertical}
+.field{display:flex;flex-direction:column;gap:5px;font-size:14px;color:var(--redD)}
+.field small,.estado{font-weight:700;font-size:13px;color:var(--muted)}
+.msg{margin:0;padding:10px 14px;border-radius:12px;font-size:14px;border:2px solid var(--redD);background:#fde3d8;color:var(--redD)}
+.msg[data-tipo=ok]{background:#e4f1d6;border-color:var(--greenD);color:var(--greenD)}
+.msg[data-tipo=error]{background:#fde3d8;border-color:var(--redD);color:var(--redD)}
+.estado[data-tipo=error]{color:var(--redD)}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toolbar>input,.toolbar>select,.toolbar>.hint{flex:1 1 220px;width:auto}
+.filaBtns{display:flex;gap:8px;flex-wrap:wrap}
+.admin button.wood{font-size:16px;padding:10px 16px;border-radius:99px}
+.admin .closeBtn.wood{padding:8px 14px;font-size:14px}
+
+/* Entrada */
+.loginWrap{min-height:100dvh;display:flex;flex-direction:column;align-items:center;gap:22px;padding:24px 16px}
+.loginForm{width:min(100%,380px)}
+.volver{color:var(--redD);font-size:14px}
+
+/* Panel */
+.adminWrap{max-width:1040px;margin:0 auto;padding:14px 16px calc(48px + env(safe-area-inset-bottom))}
+.adminBar{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:12px 18px}
+.adminBar h1{flex:1 1 auto;font-size:clamp(24px,5vw,32px);color:#fff1d6}
+.adminBar .pill{align-self:center}
+.quien{font-size:14px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 18px}
+.tabs button.wood{--w:var(--brown);--wd:var(--brownD)}
+.tabs button.wood[aria-selected=true]{--w:var(--green);--wd:var(--greenD)}
+.aviso{position:sticky;bottom:12px;margin-top:16px;box-shadow:0 6px 18px rgba(60,20,10,.3)}
+
+/* Cartas */
+.cartaGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.cartaItem{display:flex;flex-direction:column;gap:4px;text-align:left;padding:8px;color:var(--ink);background:var(--cream2);border:2px solid var(--redD);border-radius:14px}
+.cartaItem:hover{background:#f7e8cd}
+.cartaImg{display:grid;place-items:center;aspect-ratio:3/4;border-radius:10px;background:#fffaf0;overflow:hidden}
+.cartaImg img{width:100%;height:100%;object-fit:contain}
+.sinImg{font-size:13px;color:var(--muted)}
+.cartaItem strong{font-size:15px;color:var(--redD)}
+.maz{font-size:14px}
+.faltan{font-size:12px;color:var(--redD)}
+
+/* Videos */
+.videoLista{display:grid;gap:12px}
+.videoItem{display:grid;grid-template-columns:160px 1fr auto;gap:14px;align-items:center;padding:10px;background:var(--cream2);border:2px solid var(--redD);border-radius:14px}
+.videoItem img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:#000}
+.videoTexto p{margin:4px 0;font-size:14px}
+.videoTexto a{font-size:14px;color:var(--redD)}
+.videoItem .filaBtns{flex-direction:column}
+
+/* Partida */
+.estadoGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.dato{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:var(--cream2);border:2px solid var(--line);border-radius:14px}
+.dato span{font-size:13px;color:var(--muted)}
+.dato strong{font-size:18px;color:var(--redD)}
+.dato .ok{color:var(--greenD)}.dato .mal{color:var(--redD)}
+.passForm{max-width:420px}
+
+/* Ventanas */
+dialog.modal{width:min(94vw,640px);max-height:92dvh;padding:0;color:var(--ink);background:var(--cream);border:3px solid var(--redD);border-radius:22px;box-shadow:0 8px 0 var(--redD)}
+dialog.modal::backdrop{background:rgba(60,20,10,.55)}
+.modalBody{padding:18px}
+.modalHead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.archivos{padding-top:14px;border-top:2px dashed var(--line)}
+.archivo{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:10px;background:var(--cream2);border-radius:14px}
+.archivo>strong{grid-column:1/-1;color:var(--redD)}
+.archivo audio{width:100%;grid-column:1/-1}
+.archivo .vista{grid-column:1/-1}
+.vista img{max-height:160px;border-radius:10px;background:#fffaf0}
+.btnArchivo{display:inline-flex;padding:8px 14px;font:400 15px "Lilita One",sans-serif;text-transform:uppercase;border-radius:99px;cursor:pointer}
+.btnArchivo:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+
+@media (max-width:640px){
+  .videoItem{grid-template-columns:1fr}
+  .videoItem .filaBtns{flex-direction:row}
+}

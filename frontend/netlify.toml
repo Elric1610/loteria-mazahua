@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# La app original asumía que la API estaba en el mismo origen.
+# Para mantenerlo en Netlify, reenvía /api/* a tu backend (sin CORS):
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://TU-BACKEND/api/:splat"
+#   status = 200
+#   force = true

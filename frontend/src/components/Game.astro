@@ -1,0 +1,37 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<section id="game" class="screen game" hidden>
+  <div class="topbar">
+    <button type="button" class="wood red sq backBtn" aria-label="Volver al menú"><Icon name="back" /></button>
+    <h2 id="boardTitle" class="wood red plaque">Tablero</h2>
+    <span class="beanCount wood green" title="Frijolitos puestos"><Icon name="bean" class="bean" /><b id="beanCount">0</b></span>
+  </div>
+
+  <article class="caller wood red">
+    <div class="cardFrame">
+      <div class="cardTop"><b id="currentNumber"></b><small id="cardMaz"></small></div>
+      <img id="currentImage" alt="">
+      <div class="cardName" id="cardName"></div>
+    </div>
+    <div class="info">
+      <h2 id="currentName"></h2>
+      <p id="currentMaz"></p>
+      <p id="progress"></p>
+      <div class="bar"><i id="progressBar"></i></div>
+    </div>
+  </article>
+
+  <section class="boardArea">
+    <div id="board" class="board"></div>
+    <span id="boardStatus" class="sr-only" aria-live="polite"></span>
+  </section>
+
+  <div class="actions">
+    <button id="playMaz" type="button" class="wood red"><Icon name="sound" />Audio</button>
+    <button id="playEs" type="button" class="wood gold"><Icon name="globe" />Español</button>
+    <button id="historyOpen" type="button" class="wood green"><Icon name="clock" />Historial</button>
+  </div>
+  <button id="win" type="button" class="wood gold big"><Icon name="star" />¡Lotería!</button>
+</section>
